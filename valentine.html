@@ -215,11 +215,14 @@
             }
         }
     </style>
-<audio>
-<source src="https://starper55plys.ru/wp-content/audio/lybe1.mp3">
-    </audio>
 </head>
 <body>
+    <!-- Добавляем фоновую музыку -->
+    <audio autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио элемент.
+    </audio>
+
     <div class="floating-hearts"></div>
     <div class="container">
         <div class="heart"></div>
@@ -233,15 +236,15 @@
             const heart = document.createElement('div');
             heart.innerHTML = '❤';
             heart.className = 'floating-heart';
-            
+
             const startPos = Math.random() * 100;
             heart.style.left = startPos + 'vw';
-            
+
             const duration = 6 + Math.random() * 4;
             heart.style.animationDuration = duration + 's';
-            
+
             container.appendChild(heart);
-            
+
             setTimeout(() => {
                 heart.remove();
             }, duration * 1000);
@@ -253,7 +256,7 @@
             sparkle.style.left = x + 'px';
             sparkle.style.top = y + 'px';
             document.body.appendChild(sparkle);
-            
+
             setTimeout(() => {
                 sparkle.remove();
             }, 1500);
@@ -312,7 +315,7 @@
         document.addEventListener('mousemove', (e) => {
             glow.style.left = e.pageX + 'px';
             glow.style.top = e.pageY + 'px';
-            
+
             if (Math.random() < 0.1) {
                 createSparkle(e.pageX, e.pageY);
             }
@@ -345,22 +348,22 @@
                 miniHeart.style.position = 'absolute';
                 miniHeart.style.left = (mainHeart.offsetLeft + mainHeart.offsetWidth/2) + 'px';
                 miniHeart.style.top = (mainHeart.offsetTop + mainHeart.offsetHeight/2) + 'px';
-                
+
                 // Random direction and rotation
                 const angle = (Math.random() * Math.PI * 2);
                 const distance = 100 + Math.random() * 150;
                 const tx = Math.cos(angle) * distance;
                 const ty = Math.sin(angle) * distance;
                 const rotation = Math.random() * 360;
-                
+
                 miniHeart.style.setProperty('--tx', `${tx}px`);
                 miniHeart.style.setProperty('--ty', `${ty}px`);
                 miniHeart.style.setProperty('--rot', `${rotation}deg`);
-                
+
                 miniHeart.style.animation = 'miniHeartFloat 1s ease-out forwards';
-                
+
                 document.body.appendChild(miniHeart);
-                
+
                 setTimeout(() => miniHeart.remove(), 1000);
             }
 
